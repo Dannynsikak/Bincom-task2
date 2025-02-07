@@ -9,7 +9,7 @@ with open(file_name, "w") as file:
     file.write("Ofonime Nsikak Eno")
 
 # step 2 read and extract name parts
-with open(file_name, "r")as file:
+with open(file_name, "r") as file:
     full_name = file.read().strip()
 
 name_parts = full_name.split()
@@ -27,14 +27,11 @@ local_path = os.path.abspath(file_name)
 print(f"Local Path: {local_path}")
 
 # Question 3: extract baby names from HTML using Regex 
-html_data = """
-<h3 align="center">Popularity in 2020</h3>
-<table summary="...">
-<tr align="right"><td>1</td><td>Olivia</td><td>Liam</td></tr>
-<tr align="right"><td>2</td><td>Emma</td><td>Noah</td></tr>
-<tr align="right"><td>3</td><td>Ava</td><td>Oliver</td></tr>
-</table>
-"""
+html_file_path = "baby2008.html"
+
+# Read HTML content from the file
+with open(html_file_path, "r") as file:
+    html_data = file.read()
 
 # using regex to extract baby names 
 pattern = r"<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>"
@@ -47,7 +44,7 @@ for rank, girl_name, boy_name in matches:
 # sorting names by gender
 baby_names.sort()
 
-print("\nExracted Baby Names:")
+print("\nExtracted Baby Names:")
 for rank, girl, boy in baby_names:
     print(f"Rank: {rank}: {girl}, {boy}")
 
